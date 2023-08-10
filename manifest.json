@@ -1,0 +1,26 @@
+{
+  "platform-version": "2.3",
+  "product": {
+    "freshservice": {
+      "events": {
+        "onTicketCreate": {
+          "handler": "onTicketCreateHandler"
+        },
+        "onTicketUpdate": {
+          "handler": "onTicketCreateHandler"
+        }
+      },
+      "requests": {
+        "getTicketdata": {},
+        "getTime": {},
+        "getCustomObject": {},
+        "putCustomObject": {},
+        "editTicketdata": {}
+      }
+    }
+  },
+  "engines": {
+    "node": "14.21.2",
+    "fdk": "9.0.0"
+  }
+}
