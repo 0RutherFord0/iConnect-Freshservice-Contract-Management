@@ -2,10 +2,10 @@
   "getTicketdata": {
     "schema": {
       "method": "GET",
-      "host": "iconnectinfosolutions.freshservice.com",
+      "host": "prernamahadik.freshservice.com",
       "path": "/api/v2/tickets/<%= context.id %>",
       "headers": {
-        "Authorization": "Basic ZHczZmFmMlRmUUFxS2FvNlpmRDU6eA==",
+        "Authorization": "Basic c25tbFJ0QkxVTDl2YXpMU2pQVWY=",
         "Content-Type": "application/json"
       }
     }
@@ -13,10 +13,10 @@
   "editTicketdata": {
     "schema": {
       "method": "PUT",
-      "host": "iconnectinfosolutions.freshservice.com",
+      "host": "prernamahadik.freshservice.com",
       "path": "/api/v2/tickets/<%= context.id %>",
       "headers": {
-        "Authorization": "Basic ZHczZmFmMlRmUUFxS2FvNlpmRDU6eA==",
+        "Authorization": "Basic c25tbFJ0QkxVTDl2YXpMU2pQVWY=",
         "Content-Type": "application/json"
       }
     }
@@ -24,10 +24,10 @@
   "getTime": {
     "schema": {
       "method": "GET",
-      "host": "iconnectinfosolutions.freshservice.com",
+      "host": "prernamahadik.freshservice.com",
       "path": "/api/v2/tickets/<%= context.id %>/time_entries",
       "headers": {
-        "Authorization": "Basic ZHczZmFmMlRmUUFxS2FvNlpmRDU6eA==",
+        "Authorization": "Basic c25tbFJ0QkxVTDl2YXpMU2pQVWY=",
         "Content-Type": "application/json"
       }
     }
@@ -35,10 +35,10 @@
   "getCustomObject": {
     "schema": {
       "method": "GET",
-      "host": "iconnectinfosolutions.freshservice.com",
+      "host": "prernamahadik.freshservice.com",
       "path": "/api/v2/objects/<%= context.id %>/records",
       "headers": {
-        "Authorization": "Basic ZHczZmFmMlRmUUFxS2FvNlpmRDU6eA==",
+        "Authorization": "Basic c25tbFJ0QkxVTDl2YXpMU2pQVWY=",
         "Content-Type": "application/json"
       }
     }
@@ -46,10 +46,10 @@
   "putCustomObject": {
     "schema": {
       "method": "PUT",
-      "host": "iconnectinfosolutions.freshservice.com",
+      "host": "prernamahadik.freshservice.com",
       "path": "/api/v2/objects/<%= context.objects_id %>/records/<%= context.records_id %>",
       "headers": {
-        "Authorization": "Basic ZHczZmFmMlRmUUFxS2FvNlpmRDU6eA==",
+        "Authorization": "Basic c25tbFJ0QkxVTDl2YXpMU2pQVWY=",
         "Content-Type": "application/json"
       }
     }

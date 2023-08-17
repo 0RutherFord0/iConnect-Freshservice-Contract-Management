@@ -13,23 +13,28 @@ exports = {
       var workspaceJSON = JSON.parse(workspace.response);
       // console.log(workspaceJSON);
 
-      var contractID = workspaceJSON.ticket.custom_fields.contract_id;
-      console.log(contractID);
+      var boID = workspaceJSON.ticket.custom_fields.bo_id;
+      console.log(boID);
+
       var consumedTimeonTicket =
         workspaceJSON.ticket.custom_fields.consumed_time;
+      console.log(
+        "🚀 ~ file: server.js:22 ~ consumedTimeonTicket:",
+        consumedTimeonTicket
+      );
 
       if (consumedTimeonTicket === null) {
         console.log("No consumed time is updated on ticket");
         return;
       }
 
-      if (contractID === null) {
+      if (boID === null) {
         // Run code when contractID is null
-        console.log("contractID is null");
+        console.log("boID is null");
         return;
       } else {
         // Run code when contractID is not null
-        console.log("contractID is not null");
+        console.log("boID is not null");
         let ticketTime = await $request.invokeTemplate("getTime", {
           context: {
             id: ticketID,
@@ -44,22 +49,33 @@ exports = {
 
         let customObject = await $request.invokeTemplate("getCustomObject", {
           context: {
-            id: contractID,
+            id: 29000004351,
           },
         });
+
         var customObjectJSON = JSON.parse(customObject.response);
-        console.log(customObjectJSON.records[0].data);
 
-        var remainingHours =
-          customObjectJSON.records[0].data.total_remaining_hours; //63
-        var recordID = customObjectJSON.records[0].data.bo_display_id; //01
+        // Filter records based on the target bo_display_id
+        const filteredRecords = customObjectJSON.records.filter(
+          (record) => record.data.bo_display_id == boID
+        );
+        console.log(
+          "🚀 ~ file: server.js:56 ~ filteredRecords:",
+          filteredRecords
+        );
 
-        console.log("Contract Record ID: " + recordID);
+        var remainingHours = filteredRecords[0].data.remaning_hours; //63
+        console.log(
+          "🚀 ~ file: server.js:63 ~ remainingHours:",
+          remainingHours
+        );
+        // var recordID = customObjectJSON.records[0].data.bo_display_id; //01
+
+        // console.log("Contract Record ID: " + recordID);
         const result = subtractTime(remainingHours, timeSpendonTicket);
         console.log(result); //60
 
-        var entitlementHhours =
-          customObjectJSON.records[0].data.total_entitlement_hours;
+        var entitlementHhours = filteredRecords[0].data.entitlement_hours;
 
         let finalTotal = entitlementHhours - result; //100-60 = 40
         var textfinalTotal = finalTotal.toString();
@@ -70,13 +86,13 @@ exports = {
           "putCustomObject",
           {
             context: {
-              objects_id: contractID,
-              records_id: recordID,
+              objects_id: 29000004351,
+              records_id: boID,
             },
             body: JSON.stringify({
               data: {
-                total_remaining_hours: result, //60
-                total_consumed_hours: textfinalTotal, //40
+                remaning_hours: result, //60
+                consumed_hours: textfinalTotal, //40
               },
             }),
           }
@@ -90,6 +106,7 @@ exports = {
               id: ticketID,
             },
             body: JSON.stringify({
+              description: ".",
               custom_fields: {
                 consumed_time: null,
               },

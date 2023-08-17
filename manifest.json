@@ -3,9 +3,6 @@
   "product": {
     "freshservice": {
       "events": {
-        "onTicketCreate": {
-          "handler": "onTicketCreateHandler"
-        },
         "onTicketUpdate": {
           "handler": "onTicketCreateHandler"
         }
@@ -20,7 +17,7 @@
     }
   },
   "engines": {
-    "node": "14.21.2",
-    "fdk": "9.0.0"
+    "node": "18.16.0",
+    "fdk": "9.0.4"
   }
 }
